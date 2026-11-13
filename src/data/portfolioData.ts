@@ -427,3 +427,4 @@ Philosophy : Military-grade discipline (NCC) coupled with relentless AI research
   ncc: `NATIONAL CADET CORPS (NCC):
 Former Cadet. Developed rigorous personal discipline, adherence to standard operating procedures, team command, and psychological stamina under demanding circumstances. This operational mindset directly informs high-reliability software engineering.`
 };
+

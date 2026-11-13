@@ -99,3 +99,4 @@ When you deploy your individual project repositories and live web apps:
 2. Locate the project inside `PROJECTS`.
 3. Add or update the `liveUrl` and `githubUrl` fields!
 4. Replace `/public/parth-photo.jpg` whenever you take a new photo.
+

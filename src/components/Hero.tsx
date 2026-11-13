@@ -227,3 +227,4 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTerminal, onShowToast }) => {
     </section>
   );
 };
+

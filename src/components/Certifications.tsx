@@ -61,3 +61,4 @@ export const Certifications: React.FC = () => {
     </section>
   );
 };
+

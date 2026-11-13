@@ -168,3 +168,4 @@ export const ResearchSpotlight: React.FC = () => {
     </section>
   );
 };
+
