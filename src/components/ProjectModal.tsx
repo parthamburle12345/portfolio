@@ -1,7 +1,5 @@
 import React from 'react';
 import { Project } from '../data/portfolioData';
-import { X, ExternalLink, Cpu, Layers, CheckCircle, ArrowRight, Zap, Award } from 'lucide-react';
-import { GithubIcon } from './Icons';
 
 interface ProjectModalProps {
   project: Project | null;
@@ -12,113 +10,204 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
   if (!project) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-      
-      {/* Modal Surface */}
-      <div className="relative w-full max-w-4xl max-h-[90vh] flex flex-col rounded-2xl border border-white/15 bg-[#0b0e14] shadow-2xl overflow-hidden">
-        
+    <div
+      style={{
+        position: 'fixed',
+        inset: 0,
+        zIndex: 9999,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '16px',
+        backgroundColor: 'rgba(0, 0, 0, 0.75)',
+        backdropFilter: 'blur(8px)',
+        WebkitBackdropFilter: 'blur(8px)',
+      }}
+      onClick={onClose}
+    >
+      <div
+        className="glass-card"
+        style={{
+          width: '100%',
+          maxWidth: '850px',
+          maxHeight: '90vh',
+          display: 'flex',
+          flexDirection: 'column',
+          borderRadius: 'var(--border-radius-lg)',
+          overflow: 'hidden',
+          backgroundColor: 'var(--bg-surface-opaque)',
+          border: '1px solid var(--border-color)',
+          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+        }}
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* Modal Header */}
-        <div className="flex items-start justify-between border-b border-white/10 bg-[#0f121a] p-5 sm:p-6">
-          <div className="space-y-1.5 pr-6">
-            <div className="flex items-center gap-2">
-              <span className="rounded-md border border-[#FF6600]/30 bg-[#FF6600]/10 px-2 py-0.5 font-mono text-[11px] font-semibold text-[#FF6600]">
+        <div
+          style={{
+            padding: '24px',
+            borderBottom: '1px solid var(--border-color)',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-start',
+            gap: 16,
+          }}
+        >
+          <div>
+            <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 6 }}>
+              <span
+                style={{
+                  fontSize: '0.75rem',
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  color: 'var(--primary)',
+                  backgroundColor: 'var(--accent-glow)',
+                  padding: '3px 8px',
+                  borderRadius: 'var(--border-radius-sm)',
+                }}
+              >
                 {project.categoryLabel}
               </span>
-              <span className="font-mono text-xs text-emerald-400 font-medium">
+              <span style={{ fontSize: '0.8rem', color: 'var(--color-pink)', fontWeight: 600 }}>
                 ★ {project.highlightMetric}
               </span>
             </div>
-            <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+            <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-primary)' }}>
               {project.title}
             </h2>
-            <p className="text-xs sm:text-sm text-zinc-400">
+            <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginTop: 4 }}>
               {project.tagline}
             </p>
           </div>
 
           <button
             onClick={onClose}
-            className="rounded-lg border border-white/10 bg-zinc-900 p-2 text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors cursor-pointer"
+            className="icon-btn"
+            style={{ width: 36, height: 36, borderRadius: 'var(--border-radius-sm)' }}
             aria-label="Close modal"
           >
-            <X className="h-4 w-4" />
+            <i className="fa-solid fa-xmark"></i>
           </button>
         </div>
 
-        {/* Modal Scrollable Body */}
-        <div className="flex-1 overflow-y-auto p-5 sm:p-8 space-y-6">
+        {/* Modal Body */}
+        <div style={{ padding: '24px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 20 }}>
           
           {/* Architecture Overview */}
-          <div className="space-y-2">
-            <h3 className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-[#FF6600] font-bold">
-              <Cpu className="h-4 w-4" /> System & Mathematical Architecture
+          <div>
+            <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '0.95rem', fontWeight: 700, color: 'var(--primary)', textTransform: 'uppercase', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 8 }}>
+              <i className="fa-solid fa-microchip"></i> System & Mathematical Architecture
             </h3>
-            <p className="text-sm sm:text-base text-zinc-300 leading-relaxed bg-white/[0.02] p-4 rounded-xl border border-white/5">
+            <p style={{ fontSize: '0.92rem', color: 'var(--text-secondary)', lineHeight: 1.6, padding: '12px 16px', background: 'var(--bg-surface)', borderRadius: 'var(--border-radius-md)', border: '1px solid var(--border-color)' }}>
               {project.architecture.overview}
             </p>
           </div>
 
           {/* Key Innovations */}
-          <div className="space-y-3">
-            <h3 className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-emerald-400 font-bold">
-              <Zap className="h-4 w-4" /> Core Innovations & Engineering Highlights
+          <div>
+            <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '0.95rem', fontWeight: 700, color: 'var(--color-pink)', textTransform: 'uppercase', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 8 }}>
+              <i className="fa-solid fa-bolt"></i> Core Innovations & Technical Highlights
             </h3>
-            <div className="grid grid-cols-1 gap-2.5">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               {project.architecture.keyInnovations.map((item, idx) => (
                 <div
                   key={idx}
-                  className="flex items-start gap-2.5 rounded-xl border border-white/5 bg-zinc-900/40 p-3 text-xs sm:text-sm text-zinc-300"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: 10,
+                    padding: '10px 14px',
+                    borderRadius: 'var(--border-radius-sm)',
+                    background: 'var(--bg-surface)',
+                    border: '1px solid var(--border-color)',
+                    fontSize: '0.88rem',
+                    color: 'var(--text-secondary)',
+                  }}
                 >
-                  <CheckCircle className="h-4 w-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <i className="fa-solid fa-check" style={{ color: 'var(--primary)', marginTop: 3 }}></i>
                   <span>{item}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Execution Pipeline Flow */}
-          <div className="space-y-3">
-            <h3 className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-cyan-400 font-bold">
-              <Layers className="h-4 w-4" /> Pipeline Sequence
+          {/* Pipeline Flow */}
+          <div>
+            <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '0.95rem', fontWeight: 700, color: 'var(--color-purple)', textTransform: 'uppercase', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 8 }}>
+              <i className="fa-solid fa-diagram-project"></i> Pipeline Sequence
             </h3>
-            <div className="space-y-2">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               {project.architecture.flow.map((step, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center gap-3 rounded-lg border border-white/5 bg-[#12151f] px-3.5 py-2.5 text-xs sm:text-sm font-mono text-zinc-200"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 12,
+                    padding: '8px 12px',
+                    borderRadius: 'var(--border-radius-sm)',
+                    background: 'var(--bg-surface)',
+                    border: '1px solid var(--border-color)',
+                    fontSize: '0.85rem',
+                    fontFamily: 'var(--font-heading)',
+                    color: 'var(--text-primary)',
+                  }}
                 >
-                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#FF6600]/20 text-[#FF6600] text-[11px] font-bold shrink-0">
+                  <span
+                    style={{
+                      width: 22,
+                      height: 22,
+                      borderRadius: '50%',
+                      backgroundColor: 'var(--accent-glow)',
+                      color: 'var(--primary)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontWeight: 700,
+                      fontSize: '0.75rem',
+                    }}
+                  >
                     {idx + 1}
                   </span>
-                  <span className="flex-1">{step}</span>
-                  {idx < project.architecture.flow.length - 1 && (
-                    <ArrowRight className="h-3.5 w-3.5 text-zinc-600 shrink-0 hidden sm:block" />
-                  )}
+                  <span>{step}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Quantitative Impact / Benchmark */}
-          <div className="rounded-xl border border-amber-500/20 bg-amber-500/5 p-4 space-y-1">
-            <div className="flex items-center gap-2 text-xs font-mono font-bold text-amber-400 uppercase">
-              <Award className="h-4 w-4" /> Quantitative Benchmark / Impact
+          {/* Quantitative Impact */}
+          <div
+            style={{
+              padding: '14px 18px',
+              borderRadius: 'var(--border-radius-md)',
+              border: '1px solid rgba(244, 114, 182, 0.3)',
+              backgroundColor: 'var(--accent-glow)',
+            }}
+          >
+            <div style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--primary)', textTransform: 'uppercase', marginBottom: 4 }}>
+              ★ Quantitative Benchmark / Real-World Impact
             </div>
-            <p className="text-xs sm:text-sm text-zinc-200">
+            <p style={{ fontSize: '0.9rem', color: 'var(--text-primary)', margin: 0 }}>
               {project.architecture.benchmarkOrImpact}
             </p>
           </div>
 
-          {/* Technical Stack Tags */}
-          <div className="space-y-2">
-            <div className="text-xs font-mono uppercase text-zinc-500 font-semibold">
-              Technologies & Frameworks Utilized:
+          {/* Tech Stack Pills */}
+          <div>
+            <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--text-muted)', fontWeight: 600, marginBottom: 8 }}>
+              Technologies Utilized:
             </div>
-            <div className="flex flex-wrap gap-2">
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
               {project.architecture.technicalStack.map((tech) => (
                 <span
                   key={tech}
-                  className="rounded-md border border-white/10 bg-zinc-900/80 px-2.5 py-1 text-xs font-mono text-zinc-300"
+                  style={{
+                    padding: '4px 10px',
+                    borderRadius: 'var(--border-radius-sm)',
+                    fontSize: '0.75rem',
+                    backgroundColor: 'var(--bg-surface)',
+                    border: '1px solid var(--border-color)',
+                    color: 'var(--text-secondary)',
+                  }}
                 >
                   {tech}
                 </span>
@@ -128,31 +217,29 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
 
         </div>
 
-        {/* Modal Footer with Actions */}
-        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-white/10 bg-[#0d1017] p-4 sm:p-5">
-          <div className="flex items-center gap-2 text-xs font-mono text-zinc-400">
-            <span>Author:</span>
-            <span className="text-white font-medium">Parth Amburle</span>
-          </div>
+        {/* Modal Footer */}
+        <div
+          style={{
+            padding: '16px 24px',
+            borderTop: '1px solid var(--border-color)',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            backgroundColor: 'var(--bg-surface)',
+          }}
+        >
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-secondary btn-sm"
+          >
+            <i className="fa-brands fa-github"></i> View GitHub Repo
+          </a>
 
-          <div className="flex items-center gap-3">
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-xl border border-white/10 bg-zinc-900 px-4 py-2 text-xs font-mono font-medium text-white hover:border-[#FF6600]/40 transition-colors"
-            >
-              <GithubIcon className="h-4 w-4" />
-              <span>Inspect on GitHub</span>
-            </a>
-
-            <button
-              onClick={onClose}
-              className="rounded-xl bg-white/10 px-4 py-2 text-xs font-medium text-white hover:bg-white/15 transition-colors cursor-pointer"
-            >
-              Close
-            </button>
-          </div>
+          <button onClick={onClose} className="btn btn-primary btn-sm">
+            Close
+          </button>
         </div>
 
       </div>

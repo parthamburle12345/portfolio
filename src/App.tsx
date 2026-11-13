@@ -1,94 +1,80 @@
 import React, { useState, useEffect } from 'react';
-import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
-import { Projects } from './components/Projects';
-import { ResearchSpotlight } from './components/ResearchSpotlight';
-import { Skills } from './components/Skills';
-import { Experience } from './components/Experience';
-import { Certifications } from './components/Certifications';
-import { Contact } from './components/Contact';
-import { Footer } from './components/Footer';
+import { VinodNavbar } from './components/VinodNavbar';
+import { VinodHero } from './components/VinodHero';
+import { VinodSpecialties } from './components/VinodSpecialties';
+import { VinodSkills } from './components/VinodSkills';
+import { VinodExperience } from './components/VinodExperience';
+import { VinodProjects } from './components/VinodProjects';
+import { VinodPublications } from './components/VinodPublications';
+import { VinodContact } from './components/VinodContact';
+import { VinodFooter } from './components/VinodFooter';
 import { ProjectModal } from './components/ProjectModal';
-import { TerminalModal } from './components/Terminal';
 import { Toast } from './components/Toast';
 import { Project } from './data/portfolioData';
 
 export function App() {
+  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [terminalOpen, setTerminalOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
-  // Keyboard shortcut: Cmd/Ctrl + K opens terminal
+  // Sync theme attribute with document.documentElement
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-        e.preventDefault();
-        setTerminalOpen((prev) => !prev);
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    const savedTheme = localStorage.getItem('theme') as 'dark' | 'light' | null;
+    const initialTheme = savedTheme || 'dark';
+    setTheme(initialTheme);
+    document.documentElement.setAttribute('data-theme', initialTheme);
   }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+  };
 
   const handleShowToast = (msg: string) => {
     setToastMessage(msg);
   };
 
   return (
-    <div className="min-h-screen bg-[#08090d] text-zinc-100 flex flex-col font-sans">
-      {/* Navigation */}
-      <Navbar
-        onOpenTerminal={() => setTerminalOpen(true)}
-        onShowToast={handleShowToast}
-      />
+    <>
+      {/* Ambient Background Accent Glows in Lite Pink */}
+      <div className="glow-container">
+        <div className="glow-orb orb-1"></div>
+        <div className="glow-orb orb-2"></div>
+        <div className="glow-orb orb-3"></div>
+      </div>
+
+      {/* Header & Navigation */}
+      <VinodNavbar theme={theme} onToggleTheme={toggleTheme} />
 
       {/* Main Content Sections */}
-      <main className="flex-1">
-        <Hero
-          onOpenTerminal={() => setTerminalOpen(true)}
-          onShowToast={handleShowToast}
-        />
-
-        <Projects
-          onSelectProject={(project) => setSelectedProject(project)}
-        />
-
-        <ResearchSpotlight />
-
-        <Skills />
-
-        <Experience />
-
-        <Certifications />
-
-        <Contact
-          onShowToast={handleShowToast}
-        />
+      <main className="main-content">
+        <VinodHero />
+        <VinodSpecialties />
+        <VinodSkills />
+        <VinodExperience />
+        <VinodProjects onSelectProject={(project) => setSelectedProject(project)} />
+        <VinodPublications />
+        <VinodContact onShowToast={handleShowToast} />
       </main>
 
       {/* Footer */}
-      <Footer
-        onOpenTerminal={() => setTerminalOpen(true)}
-      />
+      <VinodFooter />
 
-      {/* Modals & Overlays */}
+      {/* Project Architecture Deep Dive Modal */}
       <ProjectModal
         project={selectedProject}
         onClose={() => setSelectedProject(null)}
       />
 
-      <TerminalModal
-        isOpen={terminalOpen}
-        onClose={() => setTerminalOpen(false)}
-      />
-
+      {/* Celebratory Notification Toast */}
       <Toast
         message={toastMessage}
         onClose={() => setToastMessage(null)}
       />
-    </div>
+    </>
   );
 }
 
 export default App;
-
