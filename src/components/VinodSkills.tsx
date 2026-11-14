@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 interface Skill {
   name: string;
   icon: string;
-  category: 'ai' | 'vision' | 'languages' | 'fullstack' | 'tools';
+  category: 'ai' | 'vision' | 'languages' | 'backend' | 'tools';
 }
 
 export const VinodSkills: React.FC = () => {
@@ -31,22 +31,15 @@ export const VinodSkills: React.FC = () => {
     { name: 'Java', icon: 'fa-brands fa-java', category: 'languages' },
     { name: 'C / C++', icon: 'fa-solid fa-code', category: 'languages' },
     { name: 'SQL', icon: 'fa-solid fa-database', category: 'languages' },
-    { name: 'JavaScript / TypeScript', icon: 'fa-brands fa-js', category: 'languages' },
 
-    // Full-Stack & WebGIS
-    { name: 'React 19 & Vite', icon: 'fa-brands fa-react', category: 'fullstack' },
-    { name: 'Leaflet WebGIS', icon: 'fa-solid fa-map-location-dot', category: 'fullstack' },
-    { name: 'Node.js & Express', icon: 'fa-brands fa-node-js', category: 'fullstack' },
-    { name: 'Django', icon: 'fa-solid fa-cube', category: 'fullstack' },
-    { name: 'FastAPI', icon: 'fa-solid fa-bolt', category: 'fullstack' },
-    { name: 'MongoDB', icon: 'fa-solid fa-leaf', category: 'fullstack' },
+    // Backend & APIs
+    { name: 'FastAPI', icon: 'fa-solid fa-bolt', category: 'backend' },
+    { name: 'Django', icon: 'fa-solid fa-cube', category: 'backend' },
 
-    // Tools & Systems
+    // Tools & Environments
     { name: 'Git & GitHub', icon: 'fa-brands fa-github', category: 'tools' },
-    { name: 'Docker', icon: 'fa-brands fa-docker', category: 'tools' },
     { name: 'Google Colab Pro', icon: 'fa-solid fa-laptop-code', category: 'tools' },
     { name: 'Tkinter GUI', icon: 'fa-solid fa-window-maximize', category: 'tools' },
-    { name: 'Java Swing', icon: 'fa-solid fa-desktop', category: 'tools' },
   ];
 
   const filterButtons = [
@@ -54,8 +47,8 @@ export const VinodSkills: React.FC = () => {
     { id: 'ai', label: 'AI & Deep Learning' },
     { id: 'vision', label: 'Vision & Remote Sensing' },
     { id: 'languages', label: 'Languages' },
-    { id: 'fullstack', label: 'Full-Stack & WebGIS' },
-    { id: 'tools', label: 'Tools & Systems' },
+    { id: 'backend', label: 'Backend & APIs' },
+    { id: 'tools', label: 'Tools & Environments' },
   ];
 
   const filteredSkills = activeFilter === 'all'

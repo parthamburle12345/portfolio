@@ -15,16 +15,10 @@ export const VinodSpecialties: React.FC = () => {
       description: 'Novel Vision-Language deep learning pipeline (SigLIP-LPFormer) with 311 engineered spectral channels beating SOTA MambaHSI on Pavia University dataset under extreme 30-shot scarcity.',
     },
     {
-      icon: 'fa-solid fa-map-location-dot',
-      iconColor: 'color-purple',
-      title: 'WebGIS & Decision Support Systems',
-      description: 'Full-stack spatial monitoring platform for India\'s Forest Rights Act (FRA) integrating Leaflet mapping, Tesseract OCR document extraction, and AI scheme matching algorithms.',
-    },
-    {
       icon: 'fa-solid fa-gears',
       iconColor: 'color-yellow',
       title: 'Industrial Optimization & ML Pipelines',
-      description: 'Algorithmic constraint satisfaction scheduling in PharmaScheduler and end-to-end exploratory data analysis & regression predictive engines for academic performance.',
+      description: 'Algorithmic constraint satisfaction scheduling in PharmaScheduler, optimizing pharmaceutical batch manufacturing bottlenecks, recipe bill-of-materials, and machinery resources.',
     },
   ];
 
@@ -55,3 +49,4 @@ export const VinodSpecialties: React.FC = () => {
     </section>
   );
 };
+

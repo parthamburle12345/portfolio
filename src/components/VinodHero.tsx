@@ -24,16 +24,11 @@ export const VinodHero: React.FC = () => {
 
         {/* Right: Text Content */}
         <div className="hero-text-content">
-          <div className="hero-badge">
-            <i className="fa-solid fa-bolt-lightning"></i>
-            <span>Bridging Agentic AI & Hyperspectral Remote Sensing</span>
-          </div>
-
           <h1 className="hero-title">{PERSONAL_INFO.name}</h1>
           <p className="hero-subtitle">{PERSONAL_INFO.role}</p>
 
           <p className="hero-description">
-            Pursuing <strong>Post Graduate Diploma in AI (PG-DAI)</strong> at <strong>C-DAC Bangalore</strong> (All-India Rank 1365) and <strong>B.E. in Artificial Intelligence & Machine Learning</strong> from <strong>SIES GST</strong>. Specialized in orchestrating autonomous multi-agent systems, few-shot Vision-Language models, and full-stack spatial platforms. Engineered <strong>SigLIP-LPFormer</strong> to beat the state-of-the-art MambaHSI benchmark with 30-shot sample constraints, backed by the operational discipline of a former <strong>National Cadet Corps (NCC)</strong> cadet.
+            Pursuing <strong>Post Graduate Diploma in AI (PG-DAI)</strong> at <strong>C-DAC Bangalore</strong> (All-India Rank 1365) and <strong>B.E. in Artificial Intelligence & Machine Learning</strong> from <strong>SIES GST</strong>. Specialized in orchestrating autonomous multi-agent systems and few-shot Vision-Language models. Engineered <strong>SigLIP-LPFormer</strong> to beat the state-of-the-art MambaHSI benchmark with 30-shot sample constraints, backed by the operational discipline of a former <strong>National Cadet Corps (NCC)</strong> cadet.
           </p>
 
           <div className="hero-contact-info">
@@ -92,3 +87,4 @@ export const VinodHero: React.FC = () => {
     </section>
   );
 };
+

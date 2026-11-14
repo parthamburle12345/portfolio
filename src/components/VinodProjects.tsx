@@ -8,8 +8,8 @@ interface VinodProjectsProps {
 export const VinodProjects: React.FC<VinodProjectsProps> = ({ onSelectProject }) => {
   const [activeTab, setActiveTab] = useState<'research' | 'systems'>('research');
 
-  const researchProjects = PROJECTS.filter((p) => p.category === 'vision' || p.category === 'ml');
-  const systemProjects = PROJECTS.filter((p) => p.category === 'agentic' || p.category === 'fullstack');
+  const researchProjects = PROJECTS.filter((p) => p.id === 'siglip-lpformer' || p.id === 'pharmascheduler');
+  const systemProjects = PROJECTS.filter((p) => p.id === 'ai-creative-director' || p.id === 'systems-2048');
 
   const currentList = activeTab === 'research' ? researchProjects : systemProjects;
 
@@ -20,7 +20,7 @@ export const VinodProjects: React.FC<VinodProjectsProps> = ({ onSelectProject })
         <div className="section-header">
           <h2 className="section-title">Projects Showcase</h2>
           <p className="section-subtitle">
-            Toggle between foundational AI research benchmarks and full-stack agentic systems.
+            Toggle between foundational AI research benchmarks and autonomous agentic systems.
           </p>
         </div>
 
@@ -43,7 +43,7 @@ export const VinodProjects: React.FC<VinodProjectsProps> = ({ onSelectProject })
         </div>
 
         {/* Grid Projects */}
-        <div className="grid-projects">
+        <div className="grid-projects" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))' }}>
           {currentList.map((project) => (
             <div key={project.id} className="project-card glass-card hover-glow">
               <div className="project-info">

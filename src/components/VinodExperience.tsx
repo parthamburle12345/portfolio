@@ -11,8 +11,8 @@ export const VinodExperience: React.FC = () => {
       bullets: [
         'Secured prestigious admission into C-DAC Bangalore with an All-India Rank (AIR) of 1365 in CCAT.',
         'Undergoing advanced post-graduate specializations in Deep Learning, Generative AI, NLP, and Distributed Computing.',
-        'Actively developing production-grade geospatial platforms including the FRA Green Atlas WebGIS Decision Support System.',
-        'Investigating Vision-Language models, parameter-efficient fine-tuning, and model quantization for low-latency inference.',
+        'Actively conducting research into Multi-Agent pipelines, parameter-efficient fine-tuning, and scalable deep learning architectures.',
+        'Investigating Vision-Language models, prompt adaptation, and model quantization for low-latency inference.',
       ],
     },
     {
@@ -110,3 +110,4 @@ export const VinodExperience: React.FC = () => {
     </section>
   );
 };
+
