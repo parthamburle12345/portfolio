@@ -8,9 +8,11 @@ interface VinodContactProps {
 
 export const VinodContact: React.FC<VinodContactProps> = ({ onShowToast }) => {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
+  const [honeypot, setHoneypot] = useState('');
   const [copied, setCopied] = useState(false);
   const [isSending, setIsSending] = useState(false);
   const [sendSuccess, setSendSuccess] = useState(false);
+  const [lastSubmissionTime, setLastSubmissionTime] = useState<number>(0);
 
   const handleCopyEmail = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -28,7 +30,38 @@ export const VinodContact: React.FC<VinodContactProps> = ({ onShowToast }) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.email || !formData.message) return;
+
+    // Security Defense 1: Bot Honeypot Check (Silently drop bot submissions)
+    if (honeypot) {
+      setSendSuccess(true);
+      return;
+    }
+
+    // Security Defense 2: Client-side Rate Limiting (10 second cooldown)
+    const now = Date.now();
+    if (now - lastSubmissionTime < 10000) {
+      onShowToast("Please wait a moment before sending another message.");
+      return;
+    }
+
+    // Security Defense 3: Email format validation
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const trimmedEmail = formData.email.trim();
+    if (!emailRegex.test(trimmedEmail)) {
+      onShowToast("Please enter a valid email address.");
+      return;
+    }
+
+    if (!formData.message.trim()) {
+      onShowToast("Please enter a message.");
+      return;
+    }
+
+    // Security Defense 4: CRLF sanitization & length bounding
+    const sanitizedName = formData.name.replace(/[\r\n]/g, '').trim().slice(0, 100);
+    const sanitizedEmail = trimmedEmail.replace(/[\r\n]/g, '').slice(0, 100);
+    const sanitizedSubject = (formData.subject || "Portfolio Contact Inquiry").replace(/[\r\n]/g, '').trim().slice(0, 150);
+    const sanitizedMessage = formData.message.trim().slice(0, 3000);
 
     setIsSending(true);
 
@@ -41,17 +74,19 @@ export const VinodContact: React.FC<VinodContactProps> = ({ onShowToast }) => {
           "Accept": "application/json"
         },
         body: JSON.stringify({
-          Name: formData.name,
-          Email: formData.email,
-          Subject: formData.subject || "Portfolio Contact Inquiry",
-          Message: formData.message,
-          _subject: `New Portfolio Message from ${formData.name}`,
-          _template: 'table'
+          Name: sanitizedName,
+          Email: sanitizedEmail,
+          Subject: sanitizedSubject,
+          Message: sanitizedMessage,
+          _subject: `Portfolio Inquiry from ${sanitizedName || 'Visitor'}`,
+          _template: 'table',
+          _honey: '' // FormSubmit server-side bot protection
         })
       });
 
       if (res.ok) {
         setSendSuccess(true);
+        setLastSubmissionTime(Date.now());
         confetti({
           particleCount: 45,
           spread: 60,
@@ -66,8 +101,8 @@ export const VinodContact: React.FC<VinodContactProps> = ({ onShowToast }) => {
     } catch (err) {
       // Fallback: Launch mail client with prefilled details
       onShowToast("Opening your email client as fallback...");
-      const subject = encodeURIComponent(formData.subject || `Inquiry from ${formData.name}`);
-      const body = encodeURIComponent(`From: ${formData.name} (${formData.email})\n\n${formData.message}`);
+      const subject = encodeURIComponent(sanitizedSubject);
+      const body = encodeURIComponent(`From: ${sanitizedName} (${sanitizedEmail})\n\n${sanitizedMessage}`);
       window.location.href = `mailto:${PERSONAL_INFO.email}?subject=${subject}&body=${body}`;
     } finally {
       setIsSending(false);
@@ -215,12 +250,25 @@ export const VinodContact: React.FC<VinodContactProps> = ({ onShowToast }) => {
                 </div>
               )}
 
+              {/* Security Honeypot: Hidden from human users, traps spam bots */}
+              <input
+                type="text"
+                name="_honey"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+                style={{ display: 'none' }}
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+              />
+
               <div className="form-group">
                 <input
                   type="text"
                   id="contact-name"
                   required
                   placeholder=" "
+                  maxLength={100}
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 />
@@ -233,6 +281,7 @@ export const VinodContact: React.FC<VinodContactProps> = ({ onShowToast }) => {
                   id="contact-email"
                   required
                   placeholder=" "
+                  maxLength={100}
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 />
@@ -245,6 +294,7 @@ export const VinodContact: React.FC<VinodContactProps> = ({ onShowToast }) => {
                   id="contact-subject"
                   required
                   placeholder=" "
+                  maxLength={150}
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                 />
@@ -257,6 +307,7 @@ export const VinodContact: React.FC<VinodContactProps> = ({ onShowToast }) => {
                   rows={5}
                   required
                   placeholder=" "
+                  maxLength={3000}
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 ></textarea>

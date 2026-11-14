@@ -15,7 +15,7 @@ export const VinodHero: React.FC = () => {
               className="hero-profile-img"
               onError={(e) => {
                 // If parth-photo.jpg has issues, fallback to parth-avatar.png
-                (e.target as HTMLImageElement).src = '/parth-avatar.png';
+                (e.target as HTMLImageElement).src = './parth-avatar.png';
               }}
             />
             <div className="image-border-glow"></div>
