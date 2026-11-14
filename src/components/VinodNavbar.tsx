@@ -49,8 +49,36 @@ export const VinodNavbar: React.FC<NavbarProps> = ({ theme, onToggleTheme }) => 
             ))}
           </nav>
 
-          {/* Action buttons (Theme Toggle & Mobile menu) */}
+          {/* Action buttons (Theme Toggle, Social Links & Mobile menu) */}
           <div className="nav-actions">
+            <a
+              href={PERSONAL_INFO.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="icon-btn"
+              title="GitHub Profile (parthamburle12345)"
+            >
+              <i className="fa-brands fa-github"></i>
+            </a>
+
+            <a
+              href={PERSONAL_INFO.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="icon-btn"
+              title="LinkedIn Profile (Parth Amburle)"
+            >
+              <i className="fa-brands fa-linkedin"></i>
+            </a>
+
+            <a
+              href={`mailto:${PERSONAL_INFO.email}`}
+              className="icon-btn"
+              title="Email (parthamburle123@gmail.com)"
+            >
+              <i className="fa-solid fa-envelope"></i>
+            </a>
+
             <button
               id="theme-toggle"
               className="icon-btn"

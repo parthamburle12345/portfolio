@@ -5,41 +5,41 @@ export const VinodPublications: React.FC = () => {
     {
       badgeIcon: 'fa-solid fa-certificate',
       badgeText: 'Udemy Certified',
-      title: 'Machine Learning Masterclass',
+      title: 'Machine Learning Specialization',
       text: 'Comprehensive mastery covering Supervised Learning, Unsupervised Clustering, Optimization, Loss Formulations, and production Data Science workflows.',
       stats: [
-        { val: '100 / 100', lbl: 'Examination Score' },
         { val: 'Verified', lbl: 'Credential Status' },
+        { val: 'Mastery', lbl: 'Coursework Scope' },
       ],
     },
     {
       badgeIcon: 'fa-solid fa-award',
       badgeText: 'IIT Kanpur — NPTEL',
       title: 'AI in Industrial & Management Engineering',
-      text: 'Rigorous examination focused on Operations Management, Decision Support Systems, Heuristic Search, and Industrial Optimization.',
+      text: 'Rigorous engineering examination evaluated by IIT Kanpur, focused on Operations Management, Decision Support Systems, Heuristic Search, and Industrial Optimization.',
       stats: [
-        { val: '69 / 100', lbl: 'NPTEL Score' },
         { val: 'Elite Grade', lbl: 'Classification' },
+        { val: 'IIT Kanpur', lbl: 'Evaluating Institute' },
       ],
     },
     {
       badgeIcon: 'fa-solid fa-graduation-cap',
       badgeText: 'IIT Roorkee — NPTEL',
       title: 'Data Analytics with Python',
-      text: 'Covered Descriptive Statistics, Statistical Inference, Probability Distributions, and numerical libraries (NumPy, Pandas, Matplotlib).',
+      text: 'Rigorous analytical examination evaluated by IIT Roorkee, covering Descriptive Statistics, Statistical Inference, Probability Distributions, and numerical libraries.',
       stats: [
-        { val: '51 / 100', lbl: 'NPTEL Score' },
         { val: 'Certified', lbl: 'Classification' },
+        { val: 'IIT Roorkee', lbl: 'Evaluating Institute' },
       ],
     },
     {
       badgeIcon: 'fa-solid fa-building-columns',
-      badgeText: 'SIES GST & Pre-Eng',
-      title: 'Academic Degrees & Honors',
-      text: 'SIES GST B.E. in AIML (CGPA: 7.40/10). Higher Secondary Certificate (HSC) at Mahatma Phule (74.00%). Secondary School Certificate (SSC) at Changu Kana Thakur (84.00%).',
+      badgeText: 'University Degree',
+      title: 'B.E. in Artificial Intelligence & Machine Learning',
+      text: 'SIES Graduate School of Technology, with strong preparatory foundations from Mahatma Phule College and Changu Kana Thakur.',
       stats: [
-        { val: '7.40 / 10', lbl: 'B.E. CGPA' },
-        { val: '84% / 74%', lbl: 'SSC / HSC' },
+        { val: 'B.E. AIML', lbl: 'Degree Specialization' },
+        { val: 'Graduating 2026', lbl: 'Academic Status' },
       ],
     },
   ];
@@ -81,4 +81,3 @@ export const VinodPublications: React.FC = () => {
     </section>
   );
 };
-

@@ -10,13 +10,26 @@ export const VinodFooter: React.FC = () => {
         </p>
 
         <div className="footer-links">
-          <a href={PERSONAL_INFO.github} target="_blank" rel="noopener noreferrer">
+          <a
+            href={PERSONAL_INFO.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            title="GitHub Profile (parthamburle12345)"
+          >
             <i className="fa-brands fa-github"></i> GitHub
           </a>
-          <a href={PERSONAL_INFO.linkedin} target="_blank" rel="noopener noreferrer">
+          <a
+            href={PERSONAL_INFO.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            title="LinkedIn Profile (Parth Amburle)"
+          >
             <i className="fa-brands fa-linkedin"></i> LinkedIn
           </a>
-          <a href={`mailto:${PERSONAL_INFO.email}`}>
+          <a
+            href={`mailto:${PERSONAL_INFO.email}`}
+            title="Email (parthamburle123@gmail.com)"
+          >
             <i className="fa-solid fa-envelope"></i> Email
           </a>
         </div>

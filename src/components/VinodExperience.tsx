@@ -7,9 +7,9 @@ export const VinodExperience: React.FC = () => {
       role: 'Post Graduate Diploma in AI (PG-DAI)',
       company: 'C-DAC Bangalore (Centre for Development of Advanced Computing)',
       location: 'Bangalore, Karnataka, India',
-      badge: 'CCAT AIR: 1365',
+      badge: 'Post Graduate Diploma',
       bullets: [
-        'Secured prestigious admission into C-DAC Bangalore with an All-India Rank (AIR) of 1365 in CCAT.',
+        'Secured competitive admission into C-DAC Bangalore through the national CCAT examination.',
         'Undergoing advanced post-graduate specializations in Deep Learning, Generative AI, NLP, and Distributed Computing.',
         'Actively conducting research into Multi-Agent pipelines, parameter-efficient fine-tuning, and scalable deep learning architectures.',
         'Investigating Vision-Language models, prompt adaptation, and model quantization for low-latency inference.',
@@ -32,11 +32,11 @@ export const VinodExperience: React.FC = () => {
       role: 'B.E. in Artificial Intelligence & Machine Learning',
       company: 'SIES Graduate School of Technology',
       location: 'Navi Mumbai, Maharashtra, India',
-      badge: 'CGPA: 7.40 / 10',
+      badge: 'Degree: B.E. AIML',
       bullets: [
         'Specialized in Artificial Intelligence, Deep Learning, Vision Transformers, and Multi-Agent Architectures.',
-        'Mentored by Dr. Arundhati Das on groundbreaking Hyperspectral Image Classification research using SigLIP-LPFormer.',
-        'Engineered complete production-grade systems including the AI Creative Director, PharmaScheduler, and interactive software tools.',
+        'Mentored by Dr. Arundhati Das on novel Hyperspectral Image Classification research.',
+        'Engineered complete production-grade systems including autonomous multi-agent pipelines and algorithmic schedulers.',
       ],
     },
     {

@@ -28,15 +28,23 @@ export const VinodHero: React.FC = () => {
           <p className="hero-subtitle">{PERSONAL_INFO.role}</p>
 
           <p className="hero-description">
-            Pursuing <strong>Post Graduate Diploma in AI (PG-DAI)</strong> at <strong>C-DAC Bangalore</strong> (All-India Rank 1365) and <strong>B.E. in Artificial Intelligence & Machine Learning</strong> from <strong>SIES GST</strong>. Specialized in orchestrating autonomous multi-agent systems and few-shot Vision-Language models. Engineered <strong>SigLIP-LPFormer</strong> to beat the state-of-the-art MambaHSI benchmark with 30-shot sample constraints, backed by the operational discipline of a former <strong>National Cadet Corps (NCC)</strong> cadet.
+            Artificial Intelligence & Machine Learning Engineer currently pursuing a <strong>Post Graduate Diploma in AI (PG-DAI)</strong> at <strong>C-DAC Bangalore</strong> alongside a <strong>B.E. in Artificial Intelligence & Machine Learning</strong> from <strong>SIES GST</strong>. Deeply focused on architecting autonomous multi-agent systems, parameter-efficient foundation model adaptation, and advanced deep learning pipelines under extreme few-shot data scarcity constraints. Combines analytical research rigor with the high operational discipline and standard operating execution developed as a former <strong>National Cadet Corps (NCC)</strong> cadet.
           </p>
 
           <div className="hero-contact-info">
-            <a href={`mailto:${PERSONAL_INFO.email}`} className="contact-item">
+            <a
+              href={`mailto:${PERSONAL_INFO.email}`}
+              className="contact-item"
+              title="Click to email directly"
+            >
               <i className="fa-solid fa-envelope"></i>
               <span>{PERSONAL_INFO.email}</span>
             </a>
-            <a href={`tel:${PERSONAL_INFO.phone}`} className="contact-item">
+            <a
+              href={`tel:${PERSONAL_INFO.phone}`}
+              className="contact-item"
+              title="Call or WhatsApp"
+            >
               <i className="fa-solid fa-phone"></i>
               <span>{PERSONAL_INFO.phone}</span>
             </a>
@@ -59,7 +67,7 @@ export const VinodHero: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="social-link"
-              title="GitHub Profile"
+              title="Visit GitHub Profile (parthamburle12345)"
             >
               <i className="fa-brands fa-github"></i>
             </a>
@@ -68,14 +76,14 @@ export const VinodHero: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="social-link"
-              title="LinkedIn Profile"
+              title="Connect on LinkedIn (Parth Amburle)"
             >
               <i className="fa-brands fa-linkedin"></i>
             </a>
             <a
               href={`mailto:${PERSONAL_INFO.email}`}
               className="social-link"
-              title="Send Direct Email"
+              title="Send Direct Email to Parth"
             >
               <i className="fa-solid fa-envelope"></i>
             </a>
